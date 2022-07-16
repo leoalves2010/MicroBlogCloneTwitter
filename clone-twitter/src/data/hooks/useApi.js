@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import ApiService from '../services/ApiService';
+import { ApiService } from '../services/ApiService';
 
 const fetcher = async (endPoint, config) => {
     const response = await ApiService(endPoint, config);

@@ -14,7 +14,14 @@ const tweet = {
 };
 
 export default function Index() {
-    const user = useIndex();
+    const {
+        user,
+        maxTextLength,
+        onTextChange,
+        text,
+        sendTweet,
+        sortedTweetList,
+    } = useIndex();
     return (
         <div>
             <h1 className={styles["page-title"]}>DevTweet</h1>
