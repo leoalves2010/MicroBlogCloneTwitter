@@ -4,7 +4,7 @@ import { ApiService } from "../../services/ApiService";
 import { mutate } from "swr";
 
 export function useIndex() {
-    const user = {
+    const userData = {
         name: "Leonardo Dvulatk",
         username: "leoalves2010",
         avatar: "http://www.github.com/leoalves2010.png",
@@ -15,35 +15,37 @@ export function useIndex() {
     const tweetsList = useApi("tweets").data;
 
     const sortedTweetList = useMemo(() => {
-        return (tweetsList || []).sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+        return (tweetsList || []).sort((a, b) =>
+            a.data.date < b.data.date ? 1 : -1
+        );
     }, [tweetsList]);
 
-    const [text, setText] = useState("");
+    const [tweetText, setTweetText] = useState("");
 
     const onTextChange = (event) => {
         let text = event.target.value;
         if (text.length <= maxTextLength) {
-            setText(text);
+            setTweetText(text);
         }
     };
 
     const sendTweet = async () => {
         await ApiService.post("tweets", {
             data: {
-                user,
-                text,
-                date: new Date().toISOString(),
+                userData,
+                tweetText,
+                dateTweet: new Date().toISOString(),
             },
         });
-        setText('');
+        setTweetText("");
         mutate("tweets");
     };
 
     return {
-        user,
+        userData,
         maxTextLength,
         onTextChange,
-        text,
+        tweetText,
         sendTweet,
         sortedTweetList,
     };

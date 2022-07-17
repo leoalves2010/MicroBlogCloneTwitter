@@ -1,4 +1,5 @@
 import styles from "./Tweet.module.css";
+import { DateService } from "../../../../data/services/DateService";
 
 export default function Tweet({ tweet }) {
     return (
@@ -18,7 +19,7 @@ export default function Tweet({ tweet }) {
                 </span>
                 <span className={styles["date-tweet"]}>
                     {" "}
-                    - {tweet.dateTweet}
+                    - {DateService.relativeTime(tweet.dateTweet)}
                 </span>
             </div>
             <div className={styles["tweet-text"]}>{tweet.tweetText}</div>

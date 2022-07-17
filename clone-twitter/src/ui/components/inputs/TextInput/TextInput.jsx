@@ -3,7 +3,7 @@ import styles from './TextInput.module.css';
 export default function TextInput(props){
     return(
         <div>
-            <textarea className={styles['input']} {...props} placeholder={'O que está acontecendo?'}/>
+            <textarea className={styles['input']} {...props} />
         </div>
     );
 }
