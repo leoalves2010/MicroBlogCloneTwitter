@@ -16,7 +16,7 @@ export function useIndex() {
 
     const sortedTweetList = useMemo(() => {
         return (tweetsList || []).sort((a, b) =>
-            a.data.date < b.data.date ? 1 : -1
+            a.data.dateTweet < b.data.dateTweet ? 1 : -1
         );
     }, [tweetsList]);
 
